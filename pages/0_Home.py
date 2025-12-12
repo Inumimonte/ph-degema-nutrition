@@ -1016,6 +1016,10 @@ with tab_mon:
 
     # -------- Degema PHC MAP (from GeoJSON) --------
     st.markdown("### Service availability map – Degema PHC")
+    # After the green banner:
+   st.markdown("### Degema PHC Service Availability Map")
+   st.pydeck_chart(r)
+
 
     poly_rows = []
     for feat in degema_phc_geojson["features"]:
@@ -1709,5 +1713,6 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
 
 
