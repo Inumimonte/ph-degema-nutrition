@@ -1,57 +1,45 @@
 import streamlit as st
 import requests, zipfile, io, os, runpy, sys, tempfile
-from time import sleep
 
-# ----------------------------
-# PAGE CONFIG
-# ----------------------------
-st.set_page_config(
-    page_title="Nutrition Dashboard",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-
-# Hide Streamlit menu + footer + expanders
-st.markdown("""
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-</style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="Nutrition Dashboard", layout="wide")
 
 # ----------------------------
 # PROFESSIONAL LOADING SCREEN
 # ----------------------------
-st.markdown(
-    """
-    <div style="text-align:center; margin-top:60px;">
-        <h1 style="color:#1B998B; font-weight:700;">Nutrition & Complementary Feeding Dashboard</h1>
-        <h3 style="color:#555;">Port Harcourt & Degema LGAs</h3>
-        <p style="color:#777; font-size:16px;">
+placeholder = st.empty()
+
+with placeholder.container():
+    st.markdown(
+        """
+        <h1 style='text-align:center; color:#0F6B3D;'>
+            Nutrition & Complementary Feeding Dashboard
+        </h1>
+
+        <h3 style='text-align:center; color:#444; margin-top:-10px;'>
+            Port Harcourt & Degema LGAs
+        </h3>
+
+        <p style='text-align:center; color:#666;'>
             Initializing dashboard… please wait.
         </p>
-        <br>
-        <img src="https://raw.githubusercontent.com/streamlit/streamlit/develop/docs/_static/img/logo.png"
-             width="80" style="opacity:0.6;"/>
-        <br><br>
-        <div style="color:#1B998B; font-size:18px; font-weight:600;">
-            Fetching secure application files…
+
+        <div style='text-align:center;'>
+            <img src="https://static.streamlit.io/examples/loading.gif" width="80">
         </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-progress = st.progress(0)
+        <p style='text-align:center; color:#888;'>
+            Fetching secure application files…
+        </p>
 
-for i in range(1, 85):
-    sleep(0.015)
-    progress.progress(i)
+        <hr style="margin-top:20px; border:1px solid #0F6B3D;">
+        """,
+        unsafe_allow_html=True
+    )
 
-# ----------------------------
-# DOWNLOAD REAL APP FROM GITHUB
-# ----------------------------
+
+# ---------------------------------------------
+# 1. Download repo ZIP
+# ---------------------------------------------
 GITHUB_USER = "Inumimonte"
 GITHUB_REPO = "ph-degema-dashboard"
 BRANCH = "main"
@@ -62,9 +50,12 @@ try:
     r = requests.get(ZIP_URL, timeout=60)
     r.raise_for_status()
 except Exception as e:
-    st.error(f"Download failed: {e}")
+    placeholder.error(f"Failed to download the application files: {e}")
     st.stop()
 
+# ---------------------------------------------
+# 2. Extract into temp folder
+# ---------------------------------------------
 tmp_dir = tempfile.mkdtemp()
 z = zipfile.ZipFile(io.BytesIO(r.content))
 z.extractall(tmp_dir)
@@ -75,9 +66,10 @@ root = os.path.join(tmp_dir, folder)
 os.chdir(root)
 sys.path.insert(0, root)
 
-progress.progress(100)
+# Remove loading screen before loading real app
+placeholder.empty()
 
-# ----------------------------
-# RUN REAL APP
-# ----------------------------
+# ---------------------------------------------
+# 3. Run the REAL dashboard
+# ---------------------------------------------
 runpy.run_path(os.path.join(root, "app.py"), run_name="__main__")
