@@ -1,3 +1,35 @@
+import streamlit as st
+
+st.set_page_config(page_title="Nutrition Dashboard", layout="wide")
+
+# GREEN HEADER
+st.markdown("""
+<style>
+.top-banner {
+    background-color: #0D8F57;
+    padding: 22px;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-family: Arial, sans-serif;
+}
+.sub-text {
+    color: #e9e9e9;
+    margin-top: -8px;
+    font-size: 16px;
+}
+</style>
+
+<div class="top-banner">
+    <h1>Nutrition & Complementary Feeding Dashboard</h1>
+    <p class="sub-text">Port Harcourt & Degema LGAs</p>
+</div>
+""", unsafe_allow_html=True)
+
+
+
+
 import re
 import numpy as np
 import pandas as pd
@@ -1677,4 +1709,5 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
 
