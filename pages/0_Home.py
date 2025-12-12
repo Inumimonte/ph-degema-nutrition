@@ -1,23 +1,33 @@
 import streamlit as st
-
 st.set_page_config(page_title="Nutrition Dashboard", layout="wide")
 
-# GREEN HEADER
+# ---- GREEN HEADER + WHITE BACKGROUND ----
 st.markdown("""
 <style>
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Sidebar background */
+[data-testid="stSidebar"] {
+    background-color: #F4F4F4 !important;
+}
+
+/* Green banner */
 .top-banner {
     background-color: #0D8F57;
     padding: 22px;
     text-align: center;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 25px;
     font-family: Arial, sans-serif;
 }
 .sub-text {
-    color: #e9e9e9;
-    margin-top: -8px;
+    color: #f0f0f0;
     font-size: 16px;
+    margin-top: -8px;
 }
 </style>
 
@@ -26,8 +36,6 @@ st.markdown("""
     <p class="sub-text">Port Harcourt & Degema LGAs</p>
 </div>
 """, unsafe_allow_html=True)
-
-
 
 
 import re
@@ -1713,6 +1721,7 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
 
 
 
