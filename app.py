@@ -16,7 +16,7 @@ st.markdown(
     </h3>
 
     <p style="text-align:center; font-size:15px; color:#666;">
-        Inumimonte David Ennis Research Work… please wait.
+        Initializing dashboard… please wait.
     </p>
 
     <hr style="height:4px; background-color:#1E88E5; border:none; margin-top:10px; margin-bottom:10px;" />
