@@ -12,13 +12,13 @@ def force_light_background():
         <style>
         /* Main app background */
         .stApp {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
+            background-color: white !important;
+            color: Green !important;
         }
 
         /* Main content area */
         [data-testid="stAppViewContainer"] {
-            background-color: #FFFFFF !important;
+            background-color: White !important;
         }
 
         /* Sidebar */
@@ -28,7 +28,7 @@ def force_light_background():
 
         /* Top header */
         [data-testid="stHeader"] {
-            background-color: #FFFFFF !important;
+            background-color: white !important;
         }
         </style>
         """,
@@ -1677,3 +1677,4 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
