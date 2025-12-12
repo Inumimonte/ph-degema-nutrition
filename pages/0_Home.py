@@ -59,37 +59,7 @@ import plotly.express as px
 import pydeck as pdk
 
 
-# --- FORCE LIGHT BACKGROUND ---
-def force_light_background():
-    st.markdown(
-        """
-        <style>
-        /* Main app background */
-        .stApp {
-            background-color: white !important;
-            color: Green !important;
-        }
 
-        /* Main content area */
-        [data-testid="stAppViewContainer"] {
-            background-color: White !important;
-        }
-
-        /* Sidebar */
-        [data-testid="stSidebar"] {
-            background-color: #F4F4F4 !important;
-        }
-
-        /* Top header */
-        [data-testid="stHeader"] {
-            background-color: white !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-# ---------------------------------------------------
 # 0. DEGEMA PHC GEOJSON (MAP DATA)
 # ---------------------------------------------------
 
@@ -1735,6 +1705,7 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
 
 
 
