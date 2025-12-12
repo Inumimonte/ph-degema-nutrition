@@ -1,9 +1,14 @@
 import streamlit as st
+
+# Must be first
 st.set_page_config(page_title="Nutrition Dashboard", layout="wide")
 
-# ---- GREEN HEADER + WHITE BACKGROUND ----
+# -------------------------------
+#  GREEN BANNER + LIGHT THEME
+# -------------------------------
 st.markdown("""
 <style>
+/* Force full light-mode background */
 .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
     background-color: white !important;
     color: black !important;
@@ -14,36 +19,45 @@ st.markdown("""
     background-color: #F4F4F4 !important;
 }
 
-/* Green banner */
+/* --- GREEN TOP BANNER --- */
 .top-banner {
     background-color: #0D8F57;
-    padding: 22px;
+    padding: 25px 15px;
     text-align: center;
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 25px;
     font-family: Arial, sans-serif;
 }
-.sub-text {
-    color: #f0f0f0;
+
+.top-banner h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.top-banner p {
     font-size: 16px;
-    margin-top: -8px;
+    margin-top: 4px;
+    color: #e8f8ed;
 }
 </style>
 
 <div class="top-banner">
     <h1>Nutrition & Complementary Feeding Dashboard</h1>
-    <p class="sub-text">Port Harcourt & Degema LGAs</p>
+    <p>Degema & Port Harcourt LGAs</p>
 </div>
 """, unsafe_allow_html=True)
 
-
+# --------------------------------------------------------------------
+# Continue normal imports (unchanged from your original code)
+# --------------------------------------------------------------------
 import re
 import numpy as np
 import pandas as pd
-import streamlit as st
 import plotly.express as px
 import pydeck as pdk
+
 
 # --- FORCE LIGHT BACKGROUND ---
 def force_light_background():
@@ -1721,6 +1735,7 @@ with tab_meta:
         understand how indicators are derived and how to interpret the visualisations.
         """
     )
+
 
 
 
